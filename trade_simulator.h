@@ -12,10 +12,17 @@ typedef struct
     double          f_past_profit;          /* Profit                       */
     float           f_prev_open_value;      /* Previous open value          */
     float           f_prev_close_value;     /* Previous close value         */
+    float           f_purchase_value;       /* Purchase value               */
 }comapny_info;
 
 /* Trading account balance */
 static double stc_f_trading_acc_balance;
+
+/* Shares holding */
+static unsigned long stc_ul_shares_holding;
+
+/* Index of selected company */
+static int stc_i_company_ind;
 
 /*
  * Input: NA
@@ -38,5 +45,26 @@ static void print_company_list(void);
  * 
  */
 static int check_valid_tick_symbol(char *par_s_tick_symbol);
+
+/*
+ * Input: Number of shares to purchase
+ *
+ * Output: Status of the purchase
+ * 
+ * Description:
+ * Check if the balance in the account and current price of shares meet the
+ * requirements to buy the number of shares
+ */
+static int check_valid_purchase(unsigned long par_ul_num_shares);
+
+/*
+ * Input: Number of shares to purchase
+ *
+ * Output: NA
+ * 
+ * Description:
+ * Buy the number of shares specified and deduct the available funds accordingly
+ */
+static void buy_shares(unsigned long par_ul_shares_to_buy);
 
 #endif /* __TRADE_SIMULATOR_H__ */

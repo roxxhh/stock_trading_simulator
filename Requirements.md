@@ -22,15 +22,15 @@
 | 4                  | Create a trading account with a starting balance of   | Done          |
 |                    | $10000                                                |               |
 +--------------------+-------------------------------------------------------+---------------+
-| 5                  | Provide the option to the trader to select one company|
-|                    | from the provided list using ticker symbol (once the  |
-|                    | selection has been made, the company cannot be        |
-|                    | changed till the end of simulation)                   |
-+--------------------+-------------------------------------------------------+
-| 6                  | Take the initial number of shares to purchase based   |
-|                    | on the "current price" (Req. 1) and "starting balance"|
-|                    | (Req. 4)                                              |
-+--------------------+-------------------------------------------------------+
+| 5                  | Provide the option to the trader to select one company| Done          |
+|                    | from the provided list using ticker symbol (once the  |               |
+|                    | selection has been made, the company cannot be        |               |
+|                    | changed till the end of simulation)                   |               |
++--------------------+-------------------------------------------------------+---------------+
+| 6                  | Take the initial number of shares to purchase based   | Done          |
+|                    | on the "current price" (Req. 1) and "starting balance"|               |
+|                    | (Req. 4)                                              |               |
++--------------------+-------------------------------------------------------+---------------+
 | 7                  | Simulate the next 5 stock prices for the selected     |
 |                    | company using a random function generator to show a   |
 |                    | upward or downward trend to aid the decision making   |

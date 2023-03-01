@@ -15,7 +15,8 @@ comapny_info database[] =
         .f_past_revenue         = 158057000000,
         .f_past_profit          = -1981000000,
         .f_prev_open_value      = 11.98,
-        .f_prev_close_value     = 12.06
+        .f_prev_close_value     = 12.06,
+        .f_purchase_value       = 12.06
     },
     /* Company 2 */
     {
@@ -26,7 +27,8 @@ comapny_info database[] =
         .f_past_revenue         = 2765766900,
         .f_past_profit          = 857534200,
         .f_prev_open_value      = 419,
-        .f_prev_close_value     = 1417.95
+        .f_prev_close_value     = 1417.95,
+        .f_purchase_value       = 1417.95 
     },
     /* Company 3 */
     {
@@ -37,7 +39,8 @@ comapny_info database[] =
         .f_past_revenue         = 892570500,
         .f_past_profit          = 372780800,
         .f_prev_open_value      = 1263.70,
-        .f_prev_close_value     = 1275.35
+        .f_prev_close_value     = 1275.35,
+        .f_purchase_value       = 1275.35
     },
     /* Company 4 */
     {
@@ -48,7 +51,8 @@ comapny_info database[] =
         .f_past_revenue         = 851688000,
         .f_past_profit          = 157375000,
         .f_prev_open_value      = 8650,
-        .f_prev_close_value     = 8654
+        .f_prev_close_value     = 8654,
+        .f_purchase_value       = 8654
     },
     /* Company 5 */
     {
@@ -59,7 +63,8 @@ comapny_info database[] =
         .f_past_revenue         = 101270700,
         .f_past_profit          = 39728300,
         .f_prev_open_value      = 3132,
-        .f_prev_close_value     = 3105
+        .f_prev_close_value     = 3105,
+        .f_purchase_value       = 3105
     }
 };
 

@@ -38,6 +38,7 @@ static int check_valid_tick_symbol(char *a_s_tick_symbol)
 
         if(loc_i_check_status == 0)
         {
+            stc_i_company_ind = loc_i_index;
             break;
         }
     }
@@ -45,12 +46,39 @@ static int check_valid_tick_symbol(char *a_s_tick_symbol)
     return loc_i_check_status;
 }
 
+int check_valid_purchase(unsigned long a_ul_num_shares)
+{
+    if ((database[stc_i_company_ind].f_purchase_value * a_ul_num_shares) <= stc_f_trading_acc_balance)
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+void buy_shares(unsigned long a_ul_shares_to_buy)
+{
+    /* Update the number of shares holding */
+    stc_ul_shares_holding += a_ul_shares_to_buy;
+
+    /* Update the balance amount in the trading account after the purchse */
+    stc_f_trading_acc_balance = stc_f_trading_acc_balance - (a_ul_shares_to_buy * database[stc_i_company_ind].f_purchase_value);
+
+    printf("Number of shares holding: %ld\tBalance amount: %.3f\n\n", stc_ul_shares_holding, stc_f_trading_acc_balance);
+
+    return;
+}
+
 int main(void)
 {
     char loc_s_tick_symbol[15] = "";
     int loc_i_comp_select_flag;
+    int loc_i_valid_buy_flag;
+    unsigned long loc_ul_shares_to_buy;
 
     loc_i_comp_select_flag = 0;
+    loc_i_valid_buy_flag = 1;
+    loc_ul_shares_to_buy = 0;
 
     /* Print the list of all companies available for trading */
     print_company_list();
@@ -73,6 +101,22 @@ int main(void)
         }
     } while (loc_i_comp_select_flag);
     
+    printf("Available balance for purchasing is: %.3f\n\n", stc_f_trading_acc_balance);
+
+    do
+    {
+        printf("How many shares to purchase?\n");
+        scanf("%ld", &loc_ul_shares_to_buy);
+
+        loc_i_valid_buy_flag = check_valid_purchase(loc_ul_shares_to_buy);
+
+        if(loc_i_valid_buy_flag != 0)
+        {
+            printf("ERR: Insufficient funds, please try again\n\n");
+        }
+    } while (loc_i_valid_buy_flag);
+
+    buy_shares(loc_ul_shares_to_buy);
 
     return 0;
 }
