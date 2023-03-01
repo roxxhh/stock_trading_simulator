@@ -3,6 +3,7 @@
 
 #include "trade_simulator.h"
 
+/* Multiple company informations useful for selecting to trade */
 comapny_info database[] =
 {
     /* Company 1 */

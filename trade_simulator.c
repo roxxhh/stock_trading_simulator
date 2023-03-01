@@ -32,20 +32,16 @@ static int check_valid_tick_symbol(char *a_s_tick_symbol)
 
     loc_i_check_status = 1;
 
-    printf("check: %s\n", a_s_tick_symbol);
-
     for(loc_i_index = 0; loc_i_index < s_i_database_size; loc_i_index++)
     {
         loc_i_check_status = strcmp(database[loc_i_index].s_tick_symbol, a_s_tick_symbol);
 
         if(loc_i_check_status == 0)
         {
-            printf("check: found\n");
-            return loc_i_check_status;
+            break;
         }
     }
 
-    printf("check: not found\n");
     return loc_i_check_status;
 }
 
@@ -60,8 +56,9 @@ int main(void)
     print_company_list();
 
     /* Setup a trading account with 10000 as available amount */
-    trading_acc_balance = 10000;
+    stc_f_trading_acc_balance = 10000;
 
+    /* Read the ticker symbol input from the user, till a valid ticker symbol is input */
     do
     {
         printf("Enter the ticker symbol of the company to trade (in uppercase, as shown in the table above): ");
@@ -69,8 +66,6 @@ int main(void)
         printf("%s\n", loc_s_tick_symbol);
 
         loc_i_comp_select_flag = check_valid_tick_symbol(loc_s_tick_symbol);
-
-        printf("main: status %d\n", loc_i_comp_select_flag);
 
         if(loc_i_comp_select_flag != 0)
         {
