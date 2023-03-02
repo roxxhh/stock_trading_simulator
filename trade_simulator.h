@@ -67,4 +67,15 @@ static int check_valid_purchase(unsigned long par_ul_num_shares);
  */
 static void buy_shares(unsigned long par_ul_shares_to_buy);
 
+/*
+ * Input: NA
+ *
+ * Output: An array with new purchase values
+ * 
+ * Description:
+ * Generate five new purchase values using a random values in the range [-10, 10]
+ * and adding that to the previous purchase values
+ */
+static void generate_new_purchase_values(double *par_a_purchase_values);
+
 #endif /* __TRADE_SIMULATOR_H__ */

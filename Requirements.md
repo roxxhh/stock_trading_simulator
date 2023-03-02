@@ -31,11 +31,11 @@
 |                    | on the "current price" (Req. 1) and "starting balance"|               |
 |                    | (Req. 4)                                              |               |
 +--------------------+-------------------------------------------------------+---------------+
-| 7                  | Simulate the next 5 stock prices for the selected     |
-|                    | company using a random function generator to show a   |
-|                    | upward or downward trend to aid the decision making   |
-|                    | process                                               |
-+--------------------+-------------------------------------------------------+
+| 7                  | Simulate the next 5 stock prices for the selected     | Done          |
+|                    | company using a random function generator to show a   |               |
+|                    | upward or downward trend to aid the decision making   |               |
+|                    | process                                               |               |
++--------------------+-------------------------------------------------------+---------------+
 | 8                  | Print useful information about the traders position,  |
 |                    | such as:                                              |
 |                    |  a. Balance in the trading account                    |

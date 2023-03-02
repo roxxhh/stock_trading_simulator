@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "trade_simulator.h"
 #include "company_database.h"
@@ -46,7 +48,7 @@ static int check_valid_tick_symbol(char *a_s_tick_symbol)
     return loc_i_check_status;
 }
 
-int check_valid_purchase(unsigned long a_ul_num_shares)
+static int check_valid_purchase(unsigned long a_ul_num_shares)
 {
     if ((database[stc_i_company_ind].f_purchase_value * a_ul_num_shares) <= stc_f_trading_acc_balance)
     {
@@ -56,7 +58,7 @@ int check_valid_purchase(unsigned long a_ul_num_shares)
     return 1;
 }
 
-void buy_shares(unsigned long a_ul_shares_to_buy)
+static void buy_shares(unsigned long a_ul_shares_to_buy)
 {
     /* Update the number of shares holding */
     stc_ul_shares_holding += a_ul_shares_to_buy;
@@ -69,16 +71,36 @@ void buy_shares(unsigned long a_ul_shares_to_buy)
     return;
 }
 
+static void generate_new_purchase_values(double *a_a_purchase_values)
+{
+    int loc_i_loop;
+    double loc_f_random_value;
+
+    srand(time(0));
+
+    loc_f_random_value = (double) (rand() % 21) - 10;
+    a_a_purchase_values[0] = database[stc_i_company_ind].f_purchase_value + loc_f_random_value;
+
+    for (loc_i_loop = 1; loc_i_loop < 5; loc_i_loop++)
+    {
+        loc_f_random_value = (double) (rand() % 21) - 10;
+        a_a_purchase_values[loc_i_loop] = a_a_purchase_values[loc_i_loop-1] + loc_f_random_value;
+    }
+}
+
 int main(void)
 {
     char loc_s_tick_symbol[15] = "";
     int loc_i_comp_select_flag;
     int loc_i_valid_buy_flag;
     unsigned long loc_ul_shares_to_buy;
+    double loc_a_purchase_values[5] = {0, 1, 2, 3, 4};
+    int loc_i_loop;
 
     loc_i_comp_select_flag = 0;
     loc_i_valid_buy_flag = 1;
     loc_ul_shares_to_buy = 0;
+    loc_i_loop = 0;
 
     /* Print the list of all companies available for trading */
     print_company_list();
@@ -117,6 +139,14 @@ int main(void)
     } while (loc_i_valid_buy_flag);
 
     buy_shares(loc_ul_shares_to_buy);
+
+    generate_new_purchase_values(loc_a_purchase_values);
+
+    printf("Buy values changing: \n\n");
+    for (loc_i_loop = 0; loc_i_loop < 5; loc_i_loop++)
+    {
+        printf("%.3f\n", loc_a_purchase_values[loc_i_loop]);
+    }
 
     return 0;
 }
