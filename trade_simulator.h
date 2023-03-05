@@ -1,6 +1,8 @@
 #ifndef __TRADE_SIMULATOR_H__
 #define __TRADE_SIMULATOR_H__
 
+#define NUMBER_OF_TRADING_DECISIONS 5
+
 /* Information elements for a company */
 typedef struct
 {
@@ -49,23 +51,42 @@ static int check_valid_tick_symbol(char *par_s_tick_symbol);
 /*
  * Input: Number of shares to purchase
  *
- * Output: Status of the purchase
- * 
- * Description:
- * Check if the balance in the account and current price of shares meet the
- * requirements to buy the number of shares
- */
-static int check_valid_purchase(unsigned long par_ul_num_shares);
-
-/*
- * Input: Number of shares to purchase
- *
  * Output: NA
  * 
  * Description:
  * Buy the number of shares specified and deduct the available funds accordingly
  */
 static void buy_shares(unsigned long par_ul_shares_to_buy);
+
+/*
+ * Input: Number of shares to sell
+ *
+ * Output: NA
+ * 
+ * Description:
+ * Sell the number of shares specified and credit the available funds accordingly
+ */
+static void sell_shares(unsigned long par_ul_shares_to_sell);
+
+/*
+ * Input: NA
+ *
+ * Output: NA
+ * 
+ * Description:
+ * Read the number of shares to purchase and buy them
+ */
+static void make_valid_purchase(void);
+
+/*
+ * Input: NA
+ *
+ * Output: NA
+ * 
+ * Description:
+ * Read the number of shares to sell and sell them
+ */
+static void make_valid_sale(void);
 
 /*
  * Input: NA
@@ -77,5 +98,15 @@ static void buy_shares(unsigned long par_ul_shares_to_buy);
  * and adding that to the previous purchase values
  */
 static void generate_new_purchase_values(double *par_a_purchase_values);
+
+/*
+ * Input: NA
+ *
+ * Output: NA
+ * 
+ * Description:
+ * Update the purchase value after simulation
+ */
+static void simulate_new_share_prices(void);
 
 #endif /* __TRADE_SIMULATOR_H__ */

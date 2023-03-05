@@ -36,28 +36,28 @@
 |                    | upward or downward trend to aid the decision making   |               |
 |                    | process                                               |               |
 +--------------------+-------------------------------------------------------+---------------+
-| 8                  | Print useful information about the traders position,  |
-|                    | such as:                                              |
-|                    |  a. Balance in the trading account                    |
-|                    |  b. Number of shares being held                       |
-|                    |  c. Value of investment based on the current price    |
-|                    |  d. Number of shares that can be bought based on the  |
-|                    |     current price and balance in trading account      |
-+--------------------+-------------------------------------------------------+
-| 9                  | Provide the option to the trader to buy the shares if |
-|                    | there is balance in the trading account for the       |
-|                    | number of shares specified                            |
-+--------------------+-------------------------------------------------------+
-| 10                 | Provide the option to the trader to keep the shares if|
-|                    | the balance is insufficient to buy                    |
-+--------------------+-------------------------------------------------------+
-| 11                 | Provide the option to the trader to keep the shares if|
-|                    | the trader does not want to sell                      |
-+--------------------+-------------------------------------------------------+
-| 12                 | Provide the option to the trader to sell the shares   |
-|                    | and put the amount into the trading account           |
-+--------------------+-------------------------------------------------------+
-| 13                 | The trader can make the trading decision for 50 times,|
-|                    | once the number of decision is complete, sell the     |
-|                    | shares and transfer the money into the trading account|
-+--------------------+-------------------------------------------------------+
+| 8                  | Print useful information about the traders position,  | Done          |
+|                    | such as:                                              |               |
+|                    |  a. Balance in the trading account                    | Removed point |
+|                    |  b. Number of shares being held                       | "d"           |
+|                    |  c. Value of investment based on the current price    |               |
+|                    |  d. Number of shares that can be bought based on the  |               |
+|                    |     current price and balance in trading account      |               |
++--------------------+-------------------------------------------------------+---------------+
+| 9                  | Provide the option to the trader to buy the shares if | Done          |
+|                    | there is balance in the trading account for the       |               |
+|                    | number of shares specified                            |               |
++--------------------+-------------------------------------------------------+---------------+
+| 10                 | Provide the option to the trader to keep the shares if| Removed       |
+|                    | the balance is insufficient to buy                    |               |
++--------------------+-------------------------------------------------------+---------------+
+| 11                 | Provide the option to the trader to keep the shares if| Done          |
+|                    | the trader does not want to sell                      |               |
++--------------------+-------------------------------------------------------+---------------+
+| 12                 | Provide the option to the trader to sell the shares   | Done          |
+|                    | and put the amount into the trading account           |               |
++--------------------+-------------------------------------------------------+---------------+
+| 13                 | The trader can make the trading decision for 50 times,| Done          |
+|                    | once the number of decision is complete, sell the     |               |
+|                    | shares and transfer the money into the trading account|               |
++--------------------+-------------------------------------------------------+---------------+
