@@ -66,7 +66,7 @@ static void buy_shares(unsigned long a_ul_shares_to_buy)
     /* Update the balance amount in the trading account after the purchse */
     stc_f_trading_acc_balance = stc_f_trading_acc_balance - (a_ul_shares_to_buy * database[stc_i_company_ind].f_purchase_value);
 
-    printf("Number of shares holding: %ld\tBalance amount: %.3f\n\n", stc_ul_shares_holding, stc_f_trading_acc_balance);
+    printf("\nNumber of shares holding: %ld\tBalance amount: %.3f\n\n", stc_ul_shares_holding, stc_f_trading_acc_balance);
 
     return;
 }
@@ -78,13 +78,10 @@ static void generate_new_purchase_values(double *a_a_purchase_values)
 
     srand(time(0));
 
-    loc_f_random_value = (double) (rand() % 21) - 10;
-    a_a_purchase_values[0] = database[stc_i_company_ind].f_purchase_value + loc_f_random_value;
-
-    for (loc_i_loop = 1; loc_i_loop < 5; loc_i_loop++)
+    for (loc_i_loop = 0; loc_i_loop < 5; loc_i_loop++)
     {
-        loc_f_random_value = (double) (rand() % 21) - 10;
-        a_a_purchase_values[loc_i_loop] = a_a_purchase_values[loc_i_loop-1] + loc_f_random_value;
+        loc_f_random_value = (((float)rand()/(float)RAND_MAX) * 21) - 10.0f;
+        a_a_purchase_values[loc_i_loop] = database[stc_i_company_ind].f_purchase_value + loc_f_random_value;
     }
 }
 
@@ -123,7 +120,7 @@ int main(void)
         }
     } while (loc_i_comp_select_flag);
     
-    printf("Available balance for purchasing is: %.3f\n\n", stc_f_trading_acc_balance);
+    printf("\nAvailable balance for purchasing is: %.3f\n\n", stc_f_trading_acc_balance);
 
     do
     {
@@ -142,11 +139,19 @@ int main(void)
 
     generate_new_purchase_values(loc_a_purchase_values);
 
-    printf("Buy values changing: \n\n");
+    printf("+-----------------------------+\n");
+    printf("|Change in company share price|\n");
+    printf("+-----------------------------+\n");
     for (loc_i_loop = 0; loc_i_loop < 5; loc_i_loop++)
     {
-        printf("%.3f\n", loc_a_purchase_values[loc_i_loop]);
+        printf("|%-29.3f|\n", loc_a_purchase_values[loc_i_loop]);
     }
+    printf("+-----------------------------+\n\n");
+
+    database[stc_i_company_ind].f_purchase_value = loc_a_purchase_values[4];
+
+    printf("The new purchase value of \"%s\" is: %.3f\n", database[stc_i_company_ind].s_company_name, database[stc_i_company_ind].f_purchase_value);
+    printf("The number of shares holding is: %ld\n\n", stc_ul_shares_holding);
 
     return 0;
 }
