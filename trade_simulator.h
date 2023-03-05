@@ -15,7 +15,7 @@ typedef struct
     float           f_prev_open_value;      /* Previous open value          */
     float           f_prev_close_value;     /* Previous close value         */
     float           f_purchase_value;       /* Purchase value               */
-}comapny_info;
+}company_info;
 
 /* Trading account balance */
 static double stc_f_trading_acc_balance;

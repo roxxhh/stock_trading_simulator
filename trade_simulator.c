@@ -36,7 +36,7 @@ static int check_valid_tick_symbol(char *a_s_tick_symbol)
 
     for(loc_i_index = 0; loc_i_index < s_i_database_size; loc_i_index++)
     {
-        loc_i_check_status = strcmp(database[loc_i_index].s_tick_symbol, a_s_tick_symbol);
+        loc_i_check_status = strcmp(database[loc_i_index].s_tick_symbol, &a_s_tick_symbol[0]);
 
         if(loc_i_check_status == 0)
         {
@@ -182,31 +182,31 @@ static void simulate_new_share_prices(void)
 
 int main(void)
 {
-    char            loc_s_tick_symbol[15] = "";
-    int             loc_i_comp_select_flag;
-    int             loc_i_trade_choice;
-    int             loc_i_trade_count;
-    int             loc_i_trade_invalid;
+    char    loc_s_tick_symbol[15] = "";
+    int     loc_i_comp_select_flag;
+    int     loc_i_trade_choice;
+    int     loc_i_trade_count;
+    int     loc_i_trade_invalid;
 
     loc_i_comp_select_flag  = 0;
     loc_i_trade_choice      = 0;
     loc_i_trade_count       = 0;
-    loc_i_trade_invalid    = 0;
+    loc_i_trade_invalid     = 0;
 
     /* Print the list of all companies available for trading */
     print_company_list();
 
-    /* Setup a trading account with 10000 as available amount */
-    stc_f_trading_acc_balance = 10000;
+    /* Setup a trading account with 1000000 as available amount */
+    stc_f_trading_acc_balance = 1000000;
 
     /* Read the ticker symbol input from the user, till a valid ticker symbol is input */
     do
     {
         printf("Enter the ticker symbol of the company to trade (in uppercase, as shown in the table above): ");
-        scanf("%[^\n]%*c", loc_s_tick_symbol);
+        scanf("%[^\n]%*c", &loc_s_tick_symbol[0]);
         printf("%s\n", loc_s_tick_symbol);
 
-        loc_i_comp_select_flag = check_valid_tick_symbol(loc_s_tick_symbol);
+        loc_i_comp_select_flag = check_valid_tick_symbol(&loc_s_tick_symbol[0]);
 
         if(loc_i_comp_select_flag != 0)
         {
@@ -274,7 +274,7 @@ int main(void)
         loc_i_trade_count++;
     } while (loc_i_trade_count < NUMBER_OF_TRADING_DECISIONS);
 
-    printf("Trading decisions complete. Selling all shares\n");
+    printf("Trading decisions complete. Selling all shares...\n");
 
     /* Sell all the shares holding and update the trading account balance */
     sell_shares(stc_ul_shares_holding);

@@ -4,7 +4,7 @@
 #include "trade_simulator.h"
 
 /* Multiple company informations useful for selecting to trade */
-comapny_info database[] =
+company_info database[] =
 {
     /* Company 1 */
     {
@@ -68,6 +68,6 @@ comapny_info database[] =
     }
 };
 
-static int s_i_database_size = (int)(sizeof(database) / sizeof(comapny_info));
+static int s_i_database_size = (int)(sizeof(database) / sizeof(company_info));
 
 #endif /* __COMPANY_DATABASE_H__ */
